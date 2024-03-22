@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "bdeed2cc-558e-49e5-9f26-079a3fef46b7",
+		"name": "Medicamentos-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22440885"
+	},
+	"item": [
+		{
+			"name": "obtener todos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/medicamento/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"medicamento",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{local}}/api/v1/medicamento/byid/7",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"medicamento",
+						"byid",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "eliminar por id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{local}}/api/v1/medicamento/4",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"medicamento",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear medicamento",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n    \"nombreMedicamento\":\"DolexForte\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/medicamento/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"medicamento",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar por id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n    \"nombreMedicamento\":\"acetamimyfriend\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/medicamento/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"medicamento",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
