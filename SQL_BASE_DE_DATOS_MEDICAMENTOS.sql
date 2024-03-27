@@ -3,11 +3,18 @@ CREATE database medicamentos;
 CREATE TABLE medicamentos (
     id_medicamento INT NOT NULL AUTO_INCREMENT,
     nombre_medicamento VARCHAR(255) NOT NULL,
+    url varchar(50),
     PRIMARY KEY (id_medicamento)
 );
 
 select * from medicamentos;
 
+insert into medicamentos values (1,"acetaminofen");
+insert into medicamentos values (2,"metropolol");
+insert into medicamentos values (3,"noxpirin");
+insert into medicamentos values (4,"dolex");
+insert into medicamentos values (5,"dolex forte");
+insert into medicamentos values (6,"calmidol");
 INSERT INTO medicamentos VALUES (7, 'Reírtilina');
 INSERT INTO medicamentos VALUES (8, 'DespepTitanic');
 INSERT INTO medicamentos VALUES (9, 'Alegrisol');

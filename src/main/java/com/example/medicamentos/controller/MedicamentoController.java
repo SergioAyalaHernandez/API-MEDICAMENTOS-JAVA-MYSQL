@@ -20,6 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/medicamento")
+@CrossOrigin(origins = "*")
 public class MedicamentoController {
 
     public MedicamentoService medicamentoService;
@@ -35,10 +36,11 @@ public class MedicamentoController {
             responses = {
                     @ApiResponse(responseCode = "200", description = "Lista de medicamentos obtenida correctamente",
                             content = @Content(schema = @Schema(implementation = List.class),
-                                    examples = @ExampleObject(value = "[{\"idMedicamento\":1,\"nombreMedicamento\":\"DolexForte\"}]")))
+                                    examples = @ExampleObject(value = "[{\"idMedicamento\":1,\"nombreMedicamento\":\"DolexForte,\"url\":\"https://dev.azure.com/\"}]")))
             })
     public ResponseEntity<List<Medicamento>> getUsers() {
         try {
+            System.out.println("Se realiza petición para obtener todos los medicamentos");
             List<Medicamento> medicamentos = medicamentoService.findAllMedicamentos();
             return ResponseEntity.ok(medicamentos);
         } catch (Exception e) {
@@ -52,12 +54,13 @@ public class MedicamentoController {
             responses = {
                     @ApiResponse(responseCode = "200", description = "Medicamento encontrado",
                             content = @Content(schema = @Schema(implementation = Medicamento.class),
-                                    examples = @ExampleObject(value = "{\"idMedicamento\":1,\"nombreMedicamento\":\"DolexForte\"}"))),
+                                    examples = @ExampleObject(value = "{\"idMedicamento\":1,\"nombreMedicamento\":\"DolexForte,\"url\":\"https://dev.azure.com/"))),
                     @ApiResponse(responseCode = "404", description = "Medicamento no encontrado"),
                     @ApiResponse(responseCode = "500", description = "Error al procesar la solicitud")
             })
     public ResponseEntity<List<Medicamento>> getById(@PathVariable Long id) {
         try {
+            System.out.println("Se realiza petición para obtener medicamento por id = "+id);
             List<Medicamento> medicamentos = medicamentoService.findById(id);
             if (medicamentos.isEmpty()) {
                 return ResponseEntity.notFound().build();
@@ -81,6 +84,7 @@ public class MedicamentoController {
     )
     public ResponseEntity<Boolean> deleteById(@PathVariable Long id) {
         try {
+            System.out.println("Se realiza petición para eliminar medicamento id = "+id);
             boolean deleted = medicamentoService.deleteById(id);
             return ResponseEntity.ok(deleted);
         } catch (Exception e) {
@@ -94,7 +98,7 @@ public class MedicamentoController {
             responses = {
                     @ApiResponse(responseCode = "200", description = "Medicamento creado correctamente",
                             content = @Content(schema = @Schema(implementation = List.class),
-                                    examples = @ExampleObject(value = "{\"idMedicamento\":1,\"nombreMedicamento\":\"DolexForte\"}")))
+                                    examples = @ExampleObject(value = "{\"idMedicamento\":1,\"nombreMedicamento\":\"DolexForte,\"url\":\"https://dev.azure.com/\"}]")))
             },
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
                     content = @Content(mediaType = "application/json",
@@ -102,13 +106,15 @@ public class MedicamentoController {
                             examples = {
                                     @ExampleObject(name = "Ejemplo 1", summary = "Ejemplo Detallado",
                                             description = "Una descripción del ejemplo",
-                                            value = "{\"nombreMedicamento\":\"DolexForte\"}")
+                                            value = "{\"nombreMedicamento\":\"DolexForte\",\"url\":\"https://dev.azure.com/\"}")
+
                             }
                     )
             )
     )
     public ResponseEntity<List<Medicamento>> createMedicamento(@RequestBody Medicamento medicamento) {
         try {
+            System.out.println("Se realiza petición para crear medicamento" + medicamento);
             List<Medicamento> medicamentos = medicamentoService.createMedicamento(medicamento);
             return ResponseEntity.ok(medicamentos);
         } catch (Exception e) {
@@ -122,7 +128,7 @@ public class MedicamentoController {
             responses = {
                     @ApiResponse(responseCode = "200", description = "Medicamento actualizado correctamente",
                             content = @Content(schema = @Schema(implementation = List.class),
-                                    examples = @ExampleObject(value = "{\"idMedicamento\":1,\"nombreMedicamento\":\"DolexForte\"}")))
+                                    examples = @ExampleObject(value = "{\"idMedicamento\":1,\"nombreMedicamento\":\"DolexForte,\"url\":\"https://dev.azure.com/\"}]")))
             },
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
                     content = @Content(mediaType = "application/json",
@@ -130,13 +136,15 @@ public class MedicamentoController {
                             examples = {
                                     @ExampleObject(name = "Ejemplo 1", summary = "Ejemplo Detallado",
                                             description = "Una descripción del ejemplo",
-                                            value = "{\"nombreMedicamento\":\"DolexForte\"}")
+                                            value = "{\"nombreMedicamento\":\"DolexForte\",\"url\":\"https://dev.azure.com/\"}")
+
                             }
                     )
             )
     )
     public ResponseEntity<List<Medicamento>> updateMedicamento(@RequestBody Medicamento medicamento, @PathVariable Long id) {
         try {
+            System.out.println("Se realiza petición para actualizar medicamento id = "+id);
             List<Medicamento> medicamentos = medicamentoService.updateMedicamento(medicamento, id);
             return ResponseEntity.ok(medicamentos);
         } catch (Exception e) {

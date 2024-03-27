@@ -51,6 +51,7 @@ public class MedicamentoServiceImpl implements MedicamentoService{
         if (optionalMedicamento.isPresent()) {
             Medicamento medicamentoExistente = optionalMedicamento.get();
             medicamentoExistente.setNombreMedicamento(medicamento.getNombreMedicamento());
+            medicamentoExistente.setUrl(medicamento.getUrl());
             medicamentosRepository.save(medicamentoExistente);
             return medicamentosRepository.findAll();
         } else {

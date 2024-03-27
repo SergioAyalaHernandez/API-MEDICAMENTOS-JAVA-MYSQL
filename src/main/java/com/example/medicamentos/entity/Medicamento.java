@@ -16,5 +16,6 @@ public class Medicamento {
     private Long idMedicamento;
     @Column(name = "nombre_medicamento")
     private String nombreMedicamento;
-
+    @Column(name = "url")
+    private String url;
 }
