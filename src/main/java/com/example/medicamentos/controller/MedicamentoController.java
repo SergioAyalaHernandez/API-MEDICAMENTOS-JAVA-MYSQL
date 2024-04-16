@@ -41,8 +41,7 @@ public class MedicamentoController {
     public ResponseEntity<List<Medicamento>> getUsers() {
         try {
             System.out.println("Se realiza petición para obtener todos los medicamentos");
-            List<Medicamento> medicamentos = medicamentoService.findAllMedicamentos();
-            return ResponseEntity.ok(medicamentos);
+            return ResponseEntity.ok(medicamentoService.findAllMedicamentos());
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
@@ -61,11 +60,10 @@ public class MedicamentoController {
     public ResponseEntity<List<Medicamento>> getById(@PathVariable Long id) {
         try {
             System.out.println("Se realiza petición para obtener medicamento por id = "+id);
-            List<Medicamento> medicamentos = medicamentoService.findById(id);
-            if (medicamentos.isEmpty()) {
+            if (medicamentoService.findById(id).isEmpty()) {
                 return ResponseEntity.notFound().build();
             } else {
-                return ResponseEntity.ok(medicamentos);
+                return ResponseEntity.ok(medicamentoService.findById(id));
             }
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
@@ -85,8 +83,7 @@ public class MedicamentoController {
     public ResponseEntity<Boolean> deleteById(@PathVariable Long id) {
         try {
             System.out.println("Se realiza petición para eliminar medicamento id = "+id);
-            boolean deleted = medicamentoService.deleteById(id);
-            return ResponseEntity.ok(deleted);
+            return ResponseEntity.ok(medicamentoService.deleteById(id));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
@@ -115,8 +112,7 @@ public class MedicamentoController {
     public ResponseEntity<List<Medicamento>> createMedicamento(@RequestBody Medicamento medicamento) {
         try {
             System.out.println("Se realiza petición para crear medicamento" + medicamento);
-            List<Medicamento> medicamentos = medicamentoService.createMedicamento(medicamento);
-            return ResponseEntity.ok(medicamentos);
+            return ResponseEntity.ok(medicamentoService.createMedicamento(medicamento));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
@@ -145,8 +141,7 @@ public class MedicamentoController {
     public ResponseEntity<List<Medicamento>> updateMedicamento(@RequestBody Medicamento medicamento, @PathVariable Long id) {
         try {
             System.out.println("Se realiza petición para actualizar medicamento id = "+id);
-            List<Medicamento> medicamentos = medicamentoService.updateMedicamento(medicamento, id);
-            return ResponseEntity.ok(medicamentos);
+            return ResponseEntity.ok(medicamentoService.updateMedicamento(medicamento, id));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
